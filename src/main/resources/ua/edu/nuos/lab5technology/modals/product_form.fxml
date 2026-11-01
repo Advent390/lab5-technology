@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="540.0" spacing="18"
+      stylesheets="@../styles/styles.css"
+      styleClass="page"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ua.edu.nuos.lab5technology.controllers.ProductFormController">
+    <padding>
+        <Insets top="26" right="30" bottom="26" left="30"/>
+    </padding>
+
+    <VBox spacing="4">
+        <Label fx:id="titleLabel" text="Новий продукт" styleClass="page-title"/>
+        <Label fx:id="subtitleLabel" text="Заповніть поля та натисніть «Додати»" styleClass="muted"/>
+    </VBox>
+
+    <VBox spacing="8" styleClass="card">
+        <Label text="Назва *" styleClass="field-label"/>
+        <TextField fx:id="nameField" promptText="Наприклад, Phone X"/>
+
+        <HBox spacing="14">
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Група *" styleClass="field-label"/>
+                <ComboBox fx:id="groupBox" promptText="Оберіть групу" maxWidth="Infinity"/>
+            </VBox>
+            <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <Label text="Дата випуску" styleClass="field-label"/>
+                <DatePicker fx:id="releaseDatePicker" promptText="дд.мм.рррр" maxWidth="Infinity"/>
+            </VBox>
+        </HBox>
+
+        <Label text="Опис" styleClass="field-label"/>
+        <TextArea fx:id="descriptionArea" promptText="Короткий опис продукту"
+                  prefRowCount="4" wrapText="true"/>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Скасувати" onAction="#cancel" styleClass="ghost" cancelButton="true"/>
+        <Button fx:id="saveButton" text="Додати" onAction="#save" styleClass="primary" defaultButton="true"/>
+    </HBox>
+</VBox>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="1120.0" prefHeight="700.0" spacing="16"
+      stylesheets="@styles/styles.css"
+      styleClass="page"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ua.edu.nuos.lab5technology.controllers.ProductController">
+    <padding>
+        <Insets top="24" right="28" bottom="24" left="28"/>
+    </padding>
+
+    <VBox spacing="4">
+        <Label text="Продукція" styleClass="page-title"/>
+        <Label text="Додавайте, редагуйте та видаляйте записи. Подвійний клік по рядку відкриває редагування."
+               styleClass="muted"/>
+    </VBox>
+
+    <VBox spacing="14" styleClass="card" VBox.vgrow="ALWAYS">
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="searchField" promptText="Пошук за назвою, групою або описом…" prefWidth="360"/>
+            <Button text="Оновити" onAction="#refresh" styleClass="ghost"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="deleteButton" text="Видалити" onAction="#deleteProduct" styleClass="danger"/>
+            <Button fx:id="editButton" text="Редагувати" onAction="#editProduct" styleClass="secondary"/>
+            <Button text="+ Додати продукт" onAction="#addProduct" styleClass="primary"/>
+        </HBox>
+
+        <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="60.0" text="ID"/>
+                <TableColumn fx:id="nameColumn" prefWidth="220.0" text="Назва"/>
+                <TableColumn fx:id="groupColumn" prefWidth="160.0" text="Група"/>
+                <TableColumn fx:id="descriptionColumn" prefWidth="380.0" text="Опис"/>
+                <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Дата випуску"/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="countLabel" styleClass="muted"/>
+    </VBox>
+</VBox>

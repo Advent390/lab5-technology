@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="1260.0" prefHeight="780.0" spacing="16"
+      stylesheets="@styles/styles.css"
+      styleClass="page"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ua.edu.nuos.lab5technology.controllers.QueriesController">
+    <padding>
+        <Insets top="24" right="28" bottom="24" left="28"/>
+    </padding>
+
+    <VBox spacing="4">
+        <Label text="SQL-запити · з лабораторної №4" styleClass="page-title"/>
+        <Label text="Оберіть значення в потрібній картці й виконайте запит. Результат з'явиться праворуч."
+               styleClass="muted"/>
+    </VBox>
+
+    <HBox spacing="18" VBox.vgrow="ALWAYS">
+
+        <!-- ліворуч: шість запитів -->
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
+                    prefWidth="470.0" minWidth="470.0" maxWidth="470.0">
+            <VBox spacing="12">
+
+                <VBox spacing="10" styleClass="query-card">
+                    <Label text="ЗАПИТ 1" styleClass="caption"/>
+                    <Label text="Вивести перелік параметрів для заданої групи продукції"
+                           styleClass="query-title" wrapText="true" minHeight="-Infinity"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <ComboBox fx:id="parametersGroupBox" promptText="Група продукції"
+                                  maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <Button text="Виконати" onAction="#runQuery1" styleClass="primary"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="10" styleClass="query-card">
+                    <Label text="ЗАПИТ 2" styleClass="caption"/>
+                    <Label text="Вивести продукцію, яка не містить заданого параметра"
+                           styleClass="query-title" wrapText="true" minHeight="-Infinity"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <ComboBox fx:id="missingParameterBox" promptText="Параметр"
+                                  maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <Button text="Виконати" onAction="#runQuery2" styleClass="primary"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="10" styleClass="query-card">
+                    <Label text="ЗАПИТ 3" styleClass="caption"/>
+                    <Label text="Вивести інформацію про продукцію для заданої групи"
+                           styleClass="query-title" wrapText="true" minHeight="-Infinity"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <ComboBox fx:id="productsGroupBox" promptText="Група продукції"
+                                  maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <Button text="Виконати" onAction="#runQuery3" styleClass="primary"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="10" styleClass="query-card">
+                    <Label text="ЗАПИТ 4" styleClass="caption"/>
+                    <Label text="Вивести продукцію та всі її параметри зі значеннями"
+                           styleClass="query-title" wrapText="true" minHeight="-Infinity"/>
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button text="Виконати" onAction="#runQuery4" styleClass="primary"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="10" styleClass="query-card">
+                    <Label text="ЗАПИТ 5 · ВИДАЛЕННЯ" styleClass="caption-danger"/>
+                    <Label text="Видалити продукцію, що містить задані параметри"
+                           styleClass="query-title" wrapText="true" minHeight="-Infinity"/>
+                    <ComboBox fx:id="deleteParameterBox" promptText="Параметр" maxWidth="Infinity"/>
+                    <ComboBox fx:id="deleteSecondParameterBox" promptText="Другий параметр (необов'язково)"
+                              maxWidth="Infinity"/>
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button text="Видалити" onAction="#runQuery5" styleClass="danger"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="10" styleClass="query-card">
+                    <Label text="ЗАПИТ 6 · ЗМІНА ДАНИХ" styleClass="caption-warning"/>
+                    <Label text="Перемістити групу параметрів з однієї групи товарів в іншу"
+                           styleClass="query-title" wrapText="true" minHeight="-Infinity"/>
+                    <ComboBox fx:id="moveParameterGroupBox" promptText="Група параметрів" maxWidth="Infinity"/>
+                    <HBox spacing="10">
+                        <ComboBox fx:id="moveFromBox" promptText="З групи" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="moveToBox" promptText="В групу" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox alignment="CENTER_RIGHT">
+                        <Button text="Перемістити" onAction="#runQuery6" styleClass="warning"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+
+        <!-- праворуч: результат -->
+        <VBox spacing="12" styleClass="card" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label fx:id="resultTitleLabel" text="Результат" styleClass="card-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="resultCountLabel" styleClass="chip"/>
+            </HBox>
+
+            <TableView fx:id="resultTable" VBox.vgrow="ALWAYS">
+            </TableView>
+        </VBox>
+    </HBox>
+</VBox>

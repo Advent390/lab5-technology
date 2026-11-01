@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="900.0" prefHeight="580.0"
+      stylesheets="@styles/styles.css"
+      styleClass="page"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ua.edu.nuos.lab5technology.controllers.MainController">
+
+    <HBox alignment="CENTER_LEFT" styleClass="top-bar">
+        <VBox spacing="3">
+            <Label text="Каталог продукції" styleClass="app-title"/>
+            <Label text="Лабораторна робота №5 · JavaFX + PostgreSQL" styleClass="muted"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="30" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <HBox alignment="CENTER" spacing="26">
+            <VBox spacing="12" styleClass="menu-card" prefWidth="380" HBox.hgrow="ALWAYS">
+                <Label text="01" styleClass="badge"/>
+                <Label text="Продукція" styleClass="card-title"/>
+                <Label text="Перегляд, додавання, редагування та видалення продукції. Пошук за назвою, групою чи описом."
+                       styleClass="muted" wrapText="true" minHeight="-Infinity"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Відкрити CRUD" onAction="#openProducts"
+                        maxWidth="Infinity" prefHeight="44" styleClass="primary"/>
+            </VBox>
+
+            <VBox spacing="12" styleClass="menu-card" prefWidth="380" HBox.hgrow="ALWAYS">
+                <Label text="02" styleClass="badge"/>
+                <Label text="SQL-запити" styleClass="card-title"/>
+                <Label text="Шість запитів з лабораторної роботи №4: вибірка, видалення за параметрами та переміщення груп параметрів."
+                       styleClass="muted" wrapText="true" minHeight="-Infinity"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Відкрити запити" onAction="#openQueries"
+                        maxWidth="Infinity" prefHeight="44" styleClass="secondary"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</VBox>
